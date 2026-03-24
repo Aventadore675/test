@@ -5,28 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ride Request</title>
     <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Ride Request Page</h1>
-    <h2>Map Trajectory</h2>
-    <div id="map"></div>
-
-    <h2>Available Rides</h2>
-    <ul id="available-rides">
-        <li>Ride Type 1 - $10</li>
-        <li>Ride Type 2 - $15</li>
-        <li>Ride Type 3 - $20</li>
-    </ul>
-
-    <h2>Pricing</h2>
-    <p>Check the pricing for different ride options above.</p>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
     <script>
-        // JavaScript to load the map and available rides can go here
         function initMap() {
-            // Map initialization code
+            const mapOptions = {
+                center: { lat: 0, lng: 0 },
+                zoom: 2
+            };
+            const map = new google.maps.Map(document.getElementById('map'), mapOptions);
+            // Add your trajectory drawing logic here
         }
-        window.onload = initMap;
+
+        $(document).ready(function () {
+            // Fetch and display ride options with pricing
+            $.ajax({
+                url: '/api/rides',
+                method: 'GET',
+                success: function (data) {
+                    const ridesContainer = $('#rides');
+                    ridesContainer.empty();
+                    data.forEach(ride => {
+                        ridesContainer.append(`<div class='ride'>
+                            <h3>${ride.name}</h3>
+                            <p>Distance: ${ride.distance} km</p>
+                            <p>Price: $${ride.price}</p>
+                        </div>`);
+                    });
+                }
+            });
+        });
     </script>
+</head>
+<body onload="initMap()">
+    <header>
+        <h1>Request a Ride</h1>
+    </header>
+    <div id="map" style="height: 400px; width: 100%;"></div>
+    <div id="rides"></div>
+    <footer>
+        <p>© 2026 Ride Company</p>
+    </footer>
 </body>
 </html>
