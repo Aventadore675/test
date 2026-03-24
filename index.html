@@ -3,125 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uber Redesign</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Uber Modern Frontend</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: #fff;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            animation: fadeIn 1s;
         }
-        header {
-            text-align: center;
-            padding: 1.5em;
-        }
-        .container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 20px;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         .card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 10px;
-            text-align: center;
-            transition: transform 0.3s;
-            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.2s;
         }
         .card:hover {
             transform: scale(1.05);
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
-            padding-top: 60px;
+        .modal-header {
+            background-color: #343a40;
+            color: white;
         }
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
+        h1 { color: #000; }
+        h2 { color: #333; margin-top: 30px; }
+        .btn { margin-top: 10px; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Uber</h1>
-        <h2>Choose Your Ride or Delivery</h2>
+    <header class="bg-dark text-white text-center p-4">
+        <h1>Welcome to Uber Services</h1>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#rides">Rides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#delivery">Delivery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
-    <div class="container">
-        <div class="card" onclick="document.getElementById('modal1').style.display='block'">
-            <h3>Popular Routes</h3>
-            <p>Paris - Lyon</p>
-            <p>London - Manchester</p>
-            <p>Berlin - Munich</p>
-        </div>
-        <div class="card" onclick="document.getElementById('modal2').style.display='block'">
-            <h3>Popular Delivery Orders</h3>
-            <p>Pizza Hut</p>
-            <p>Starbucks</p>
-            <p>Whole Foods</p>
-        </div>
-    </div>
-    <!-- Modal for Ride Options -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="document.getElementById('modal1').style.display='none'">&times;</span>
-            <h2>Choose Your Ride</h2>
-            <p>Options:
-                <ul>
-                    <li>UberX</li>
-                    <li>UberXL</li>
-                    <li>Uber Black</li>
-                </ul>
-            </p>
-        </div>
-    </div>
-    <!-- Modal for Delivery Services -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="document.getElementById('modal2').style.display='none'">&times;</span>
+    <div class="container mt-5">
+        <section id="rides">
+            <h2>Our Rides</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">🚗 UberX</h5>
+                            <p class="card-text">Affordable rides for everyone.</p>
+                            <p class="text-success"><strong>Starting at $5</strong></p>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#rideModal">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">🚙 UberXL</h5>
+                            <p class="card-text">Extra space for you and your friends.</p>
+                            <p class="text-success"><strong>Starting at $7</strong></p>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#rideModal">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">🏎️ Uber Black</h5>
+                            <p class="card-text">Luxury rides with premium service.</p>
+                            <p class="text-success"><strong>Starting at $15</strong></p>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#rideModal">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="delivery" class="mt-5">
             <h2>Delivery Services</h2>
-            <p>Options:
-                <ul>
-                    <li>Uber Eats</li>
-                    <li>Uber Grocery</li>
-                    <li>Uber Connect</li>
-                </ul>
-            </p>
+            <p>Fast delivery of food, groceries, and more!</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">🍕 Uber Eats</h5>
+                            <p class="card-text">Food delivery from top restaurants.</p>
+                            <button class="btn btn-success">Order Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">🛒 Uber Grocery</h5>
+                            <p class="card-text">Groceries in minutes.</p>
+                            <button class="btn btn-success">Shop Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">📦 Uber Connect</h5>
+                            <p class="card-text">Send anything across the city.</p>
+                            <button class="btn btn-success">Send Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="pricing" class="mt-5">
+            <h2>Pricing</h2>
+            <p>Our pricing is competitive and transparent.</p>
+            <ul>
+                <li><strong>UberX:</strong> Starting at $5</li>
+                <li><strong>UberXL:</strong> Starting at $7</li>
+                <li><strong>Uber Black:</strong> Starting at $15</li>
+                <li><strong>Uber Eats:</strong> Variable by restaurant</li>
+                <li><strong>Uber Grocery:</strong> Variable by items</li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="modal fade" id="rideModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Book Your Ride</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label>Pickup Location</label>
+                            <input type="text" class="form-control" placeholder="Enter your location">
+                        </div>
+                        <div class="form-group">
+                            <label>Dropoff Location</label>
+                            <input type="text" class="form-control" placeholder="Where to?">
+                        </div>
+                        <div class="form-group">
+                            <label>Ride Type</label>
+                            <select class="form-control">
+                                <option>UberX</option>
+                                <option>UberXL</option>
+                                <option>Uber Black</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Confirm Ride</button>
+                </div>
+            </div>
         </div>
     </div>
-    <script>
-        // Close modals when clicking outside of the modal content
-        window.onclick = function(event) {
-            if (event.target.className === 'modal') {
-                event.target.style.display = 'none';
-            }
-        }
-    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
