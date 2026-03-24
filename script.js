@@ -1,10 +1,22 @@
-// script.js
-
-// Function to display current date and time in UTC format
-function displayCurrentDateTime() {
-    const now = new Date();
-    const utcDateTime = now.toISOString().replace('T', ' ').substring(0, 19);
-    console.log(`Current Date and Time (UTC): ${utcDateTime}`);
+// Initialize the map
+function initializeMap() {
+    // Map initialization logic here
 }
 
-displayCurrentDateTime();
+// Toggle service type (ride or delivery)
+function toggleService(service) {
+    // Logic to toggle between ride and delivery services
+}
+
+// Select an address from the list
+function selectAddress(address) {
+    // Logic to select an address for the service
+}
+
+// Handle card interactions for ride and delivery
+function handleCardInteraction(cardType) {
+    // Logic for interactions with ride/delivery cards
+}
+
+// Call the initializeMap function on page load
+document.addEventListener('DOMContentLoaded', initializeMap);
