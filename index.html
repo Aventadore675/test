@@ -3,9 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uber Frontend Project</title>
+    <title>Uber - Rides & Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDummyKey"></script>
 </head>
 <body>
-    <h1>Welcome to the Uber Frontend Project</h1>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo"><i class="fas fa-uber"></i> Uber</h1>
+        </header>
+
+        <!-- Service Toggle -->
+        <div class="service-toggle">
+            <button class="service-btn active" data-service="rides"><i class="fas fa-car"></i> Rides</button>
+            <button class="service-btn" data-service="delivery"><i class="fas fa-box"></i> Delivery</button>
+        </div>
+
+        <!-- Map Container -->
+        <div id="map" class="map-container"></div>
+
+        <!-- Rides Service -->
+        <div id="rides-section" class="service-section active">
+            <div class="search-box">
+                <input type="text" id="pickup" placeholder="Where are you?" class="input-field">
+                <input type="text" id="dropoff" placeholder="Where to?" class="input-field">
+                <button class="request-btn"><i class="fas fa-search"></i> Request Ride</button>
+            </div>
+
+            <div class="ride-options">
+                <h3>Choose a Ride</h3>
+                <div class="ride-card">
+                    <div class="ride-icon"><i class="fas fa-car"></i></div>
+                    <div class="ride-info">
+                        <h4>UberX</h4>
+                        <p>Affordable, everyday rides</p>
+                    </div>
+                    <div class="ride-price">$12.50</div>
+                </div>
+                <div class="ride-card">
+                    <div class="ride-icon"><i class="fas fa-car-side"></i></div>
+                    <div class="ride-info">
+                        <h4>UberXL</h4>
+                        <p>Room for up to 6 passengers</p>
+                    </div>
+                    <div class="ride-price">$18.75</div>
+                </div>
+                <div class="ride-card">
+                    <div class="ride-icon"><i class="fas fa-crown"></i></div>
+                    <div class="ride-info">
+                        <h4>Uber Black</h4>
+                        <p>Premium cars & professional drivers</p>
+                    </div>
+                    <div class="ride-price">$35.00</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery Service -->
+        <div id="delivery-section" class="service-section">
+            <div class="search-box">
+                <input type="text" id="delivery-location" placeholder="Delivery address" class="input-field">
+                <input type="text" id="delivery-item" placeholder="What do you need?" class="input-field">
+                <button class="request-btn"><i class="fas fa-search"></i> Find Delivery</button>
+            </div>
+
+            <div class="delivery-options">
+                <h3>Quick Delivery Services</h3>
+                <div class="delivery-card">
+                    <div class="delivery-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="delivery-info">
+                        <h4>Uber Eats</h4>
+                        <p>Food delivery from top restaurants</p>
+                    </div>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="delivery-info">
+                        <h4>Uber Grocery</h4>
+                        <p>Groceries & essentials in minutes</p>
+                    </div>
+                </div>
+                <div class="delivery-card">
+                    <div class="delivery-icon"><i class="fas fa-box"></i></div>
+                    <div class="delivery-info">
+                        <h4>Uber Connect</h4>
+                        <p>Send anything across the city</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
