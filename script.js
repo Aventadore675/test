@@ -17,3 +17,20 @@ function initMap() {
 function handleDelivery() {
     // code for handling delivery
 }
+<!DOCTYPE html>
+<html>
+<head>
+<title>Recherche destination</title>
+</head>
+
+<body>
+
+<h2>Rechercher une destination</h2>
+
+<form action="https://www.google.com/maps/search/" method="get">
+    <input type="text" name="query" placeholder="Entrer une destination">
+    <button type="submit">Rechercher</button>
+</form>
+
+</body>
+</html>
