@@ -1,22 +1,19 @@
-// Initialize the map
-function initializeMap() {
-    // Map initialization logic here
+// Functionality for service toggle
+function toggleService() {
+    // code for toggling service
 }
 
-// Toggle service type (ride or delivery)
-function toggleService(service) {
-    // Logic to toggle between ride and delivery services
+// Request ride button functionality
+function requestRide() {
+    // code for requesting a ride
 }
 
-// Select an address from the list
-function selectAddress(address) {
-    // Logic to select an address for the service
+// Map initialization functionality
+function initMap() {
+    // code to initialize map
 }
 
-// Handle card interactions for ride and delivery
-function handleCardInteraction(cardType) {
-    // Logic for interactions with ride/delivery cards
+// Delivery functionality
+function handleDelivery() {
+    // code for handling delivery
 }
-
-// Call the initializeMap function on page load
-document.addEventListener('DOMContentLoaded', initializeMap);
