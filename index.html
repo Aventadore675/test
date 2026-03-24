@@ -3,61 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uber Frontend</title>
+    <title>Uber Redesign</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { font-family: Arial, sans-serif; }
-        .modal { display: none; position: fixed; z-index: 1; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4); }
-        .modal-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; }
-        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
-        .close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: #fff;
+        }
+        header {
+            text-align: center;
+            padding: 1.5em;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <h1>Uber - Rides and Delivery</h1>
-    <button id="rideBtn">Request Ride</button>
-    <button id="deliveryBtn">Request Delivery</button>
-
-    <div id="rideModal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="closeRideModal">&times;</span>
-            <h2>Trip Details</h2>
-            <p>Available options...</p>
-            <p><strong>Pick-up:</strong> Location A</p>
-            <p><strong>Drop-off:</strong> Location B</p>
-            <p><strong>Estimated Cost:</strong> $15</p>
+    <header>
+        <h1>Welcome to Uber</h1>
+        <h2>Choose Your Ride or Delivery</h2>
+    </header>
+    <div class="container">
+        <div class="card" onclick="document.getElementById('modal1').style.display='block'">
+            <h3>Popular Routes</h3>
+            <p>Paris - Lyon</p>
+            <p>London - Manchester</p>
+            <p>Berlin - Munich</p>
+        </div>
+        <div class="card" onclick="document.getElementById('modal2').style.display='block'">
+            <h3>Popular Delivery Orders</h3>
+            <p>Pizza Hut</p>
+            <p>Starbucks</p>
+            <p>Whole Foods</p>
         </div>
     </div>
-
-    <div id="deliveryModal" class="modal">
+    <!-- Modal for Ride Options -->
+    <div id="modal1" class="modal">
         <div class="modal-content">
-            <span class="close" id="closeDeliveryModal">&times;</span>
-            <h2>Delivery Options</h2>
-            <p>Available delivery options...</p>
-            <p><strong>Pick-up:</strong> Location C</p>
-            <p><strong>Drop-off:</strong> Location D</p>
-            <p><strong>Estimated Cost:</strong> $10</p>
+            <span class="close" onclick="document.getElementById('modal1').style.display='none'">&times;</span>
+            <h2>Choose Your Ride</h2>
+            <p>Options:
+                <ul>
+                    <li>UberX</li>
+                    <li>UberXL</li>
+                    <li>Uber Black</li>
+                </ul>
+            </p>
         </div>
     </div>
-
+    <!-- Modal for Delivery Services -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('modal2').style.display='none'">&times;</span>
+            <h2>Delivery Services</h2>
+            <p>Options:
+                <ul>
+                    <li>Uber Eats</li>
+                    <li>Uber Grocery</li>
+                    <li>Uber Connect</li>
+                </ul>
+            </p>
+        </div>
+    </div>
     <script>
-        var rideModal = document.getElementById("rideModal");
-        var deliveryModal = document.getElementById("deliveryModal");
-
-        document.getElementById("rideBtn").onclick = function() {
-            rideModal.style.display = "block";
-        };
-
-        document.getElementById("deliveryBtn").onclick = function() {
-            deliveryModal.style.display = "block";
-        };
-
-        document.getElementById("closeRideModal").onclick = function() {
-            rideModal.style.display = "none";
-        };
-
-        document.getElementById("closeDeliveryModal").onclick = function() {
-            deliveryModal.style.display = "none";
-        };
+        // Close modals when clicking outside of the modal content
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
